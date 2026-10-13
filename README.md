@@ -73,3 +73,26 @@ VNC, e OpenGL funcionando** — tudo dentro de um APK só.
 ## 🏗️ Como funciona por dentro
 
 ### Diagrama geral
+
+## 🎉 Primeira release funcional
+
+PCSTOP v1.0.0 — Containers Ubuntu ARM64 no Android com OpenGL acelerado via Gladio.
+
+### ✨ O que funciona
+- ✅ Container Ubuntu 24.04 ARM64 via proot
+- ✅ VNC + X11 + icewm nativos
+- ✅ `glxinfo` retorna **`OpenGL vendor string: Gladio`**
+- ✅ `glxgears` roda
+- ✅ SuperTux abre janela
+- ✅ Boot 100% automático
+
+### ⚠️ O que não funciona ainda
+- ❌ Renderização 3D real (stubs)
+- ❌ Wine / jogos Windows
+
+### 📦 Como usar
+1. Baixa o `.apk` abaixo
+2. Habilita "instalar de fontes desconhecidas"
+3. Instala → abre → toca em **+** pra criar container
+4. Aguarda o boot (~3 min no primeiro)
+5. No xterm:
