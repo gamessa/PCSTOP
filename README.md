@@ -2,16 +2,14 @@
 
 # 🎮 PCSTOP
 
-### *Um PC Linux ARM64 no seu bolso.*
+### *Um PC Linux no seu bolso.*
 
-**Containers Ubuntu com OpenGL acelerado, direto no Android.**
+**Containers Debian ARM64 com Interface Gráfica, Áudio e Gerenciamento de Arquivos, direto no Android.**
 **Sem root. Sem Termux. Sem PC.**
 
-[![Status](https://img.shields.io/badge/status-v1.0--funcional-success)](https://github.com/gamessa/PCSTOP)
+[![Status](https://img.shields.io/badge/status-v1.2--funcional-success)](https://github.com/gamessa/PCSTOP)
 [![Licença](https://img.shields.io/badge/licen%C3%A7a-GPL--3.0-blue)](LICENSE)
 [![Plataforma](https://img.shields.io/badge/Android-ARM64-green)](https://www.android.com/)
-
-![glxinfo mostrando Gladio](docs/screenshots/glxinfo.png)
 
 </div>
 
@@ -19,80 +17,71 @@
 
 ## 🌟 O que é o PCSTOP?
 
-**PCSTOP transforma seu celular Android num servidor Linux gráfico portátil.**
+**PCSTOP transforma seu celular Android num ambiente Linux gráfico portátil.**
 
-Ele roda **containers Ubuntu 24.04 ARM64 completos** dentro do Android usando 
-`proot` (sem precisar de root nem de Termux), e vai além: **integra o Gladio** 
-— o lendário tradutor de OpenGL/GLX para OpenGL ES do [Winlator](https://github.com/brunodev85/winlator) — 
-fazendo com que binários Linux gráficos rodem de verdade na tela do celular.
-
-Na prática: **você abre o app, toca em "Iniciar", e tem um Ubuntu com X11, 
-VNC, e OpenGL funcionando** — tudo dentro de um APK só.
+Ele roda **containers Debian 12 ARM64 completos** dentro do Android usando `proot` (sem precisar de root nem de Termux). Na prática: **você abre o app, cria seu container, toca em "Play", e tem um Linux com interface gráfica (IceWM), terminal, áudio e gerenciador de arquivos** — tudo dentro de um APK só.
 
 ---
 
 ## 🎯 Pra que serve?
 
-### Hoje (v1.0) — provado funcionando
+### Hoje (v1.2) — provado funcionando
 
 | Caso de uso | Exemplo |
 |---|---|
-| 🧪 **Rodar ferramentas Linux** | `glxinfo`, `glxgears`, `glxdemo`, `xterm` |
-| 🎮 **Jogos Linux simples** | SuperTux, Tux Racer, Pingus |
-| 📝 **Dev no celular** | Editor de texto, Python, gcc, apt |
-| 🔬 **Testar código Linux ARM64** | Sem precisar de PC ou VM |
-| 🎨 **Aprender Linux** | Ambiente X11 completo, icewm, terminal |
+| 🧪 **Rodar ferramentas Linux** | `htop`, `nano`, `python3`, `wget` |
+| 📝 **Dev no celular** | Editar código, compilar scripts |
+| 📂 **Gerenciar arquivos** | Transferir arquivos entre Android e Linux (Thunar) |
+| 📦 **Instalar programas** | GDebi (instalador de pacotes `.deb` nativo) |
+| 🎨 **Aprender Linux** | Ambiente X11 completo, terminal, interface visual |
+| 🔊 **Áudio** | PulseAudio configurado (som no alto-falante do celular) |
 
-### Amanhã — o que tá vindo
+### O que está pronto para a Versão 2.0
 
 | Ideia | Status |
 |---|---|
-| 🍷 **Wine + jogos Windows** | ⏳ quando a renderização real estiver pronta |
-| 🎬 **Blender, GIMP, Inkscape** | ⏳ idem |
-| 🕹️ **Emuladores** | ⏳ idem |
-| 🖥️ **VNC externo** | ✅ já funciona via rede |
-| 📦 **Múltiplos containers** | ✅ já funciona |
+| 🎮 **Renderização 3D Nativa** | 🟡 Gladio integrado, aguardando XServer (X11) |
+| 🍷 **Wine + jogos Windows** | ⏳ dependente do item acima |
+| 🕹️ **Emuladores** | ⏳ futuro |
 
 ---
 
 ## ✨ Recursos
 
-- 📦 **Container Ubuntu 24.04 ARM64** — base oficial, tudo via `apt`
-- 🖥️ **X11 completo** — Xvfb + x11vnc + icewm rodando sozinhos
-- 📱 **Cliente VNC nativo** — desenha no app, sem app externo
-- 🎨 **OpenGL acelerado** — pipeline gladio completo
-- 🐍 **Bridge X11 em Python** — handshake + envio de FDs via `SCM_RIGHTS`
-- ⚡ **Ring buffer compartilhado** — cliente C ↔ servidor Kotlin
-- 🔧 **Zero root, zero Termux** — 100% dentro do APK
+- 📦 **Container Debian 12 ARM64** — rootfs customizado de ~200MB
+- 🖥️ **Interface Gráfica (IceWM)** — rodando via VNC nativo no app
+- 📱 **Cliente VNC nativo** — desenha na tela sem apps externos
+- 🔊 **Áudio Funcional** — PulseAudio injetado direto no APK
+- 📂 **Thunar (Gerenciador de Arquivos)** — com download automático caso não instalado
+- 🔧 **GDebi (Instalador de .deb)** — instale programas com 2 cliques
+- 🎨 **Gladio Integrado** — O motor OpenGL do Winlator está presente no APK, pronto para a próxima fase.
+- 🔒 **Segurança** — roda como usuário comum (`pcstop`), sem root exposto
 - 🎹 **Teclado flutuante** — atalhos Ctrl, Alt, Shift, setas, Esc
-- 📋 **Copiar log** — botão que salva logs de crash em `/sdcard/`
 - 🖼️ **UI moderna** — drawer lateral, botões circulares, tema escuro
+- 📋 **Crash Logger** — logs salvos em `/sdcard/pcstop-backup/`
 
 ---
 
-## 🏗️ Como funciona por dentro
-
-### Diagrama geral
-
-## 🎉 Primeira release funcional
-
-PCSTOP v1.0.0 — Containers Ubuntu ARM64 no Android com OpenGL acelerado via Gladio.
+## 🎉 Release v1.2 — Debian + Áudio + Arquivos
 
 ### ✨ O que funciona
-- ✅ Container Ubuntu 24.04 ARM64 via proot
-- ✅ VNC + X11 + icewm nativos
-- ✅ `glxinfo` retorna **`OpenGL vendor string: Gladio`**
-- ✅ `glxgears` roda
-- ✅ SuperTux abre janela
-- ✅ Boot 100% automático
+- ✅ Criação de containers com resolução personalizada
+- ✅ Inicialização automática do VNC + IceWM
+- ✅ Áudio via PulseAudio (configurável on/off)
+- ✅ Instalação automática do gerenciador de arquivos (Thunar)
+- ✅ Instalação de pacotes `.deb` via GDebi (com interface gráfica)
+- ✅ Usuário comum `pcstop` configurado (sem root exposto)
 
-### ⚠️ O que não funciona ainda
-- ❌ Renderização 3D real (stubs)
-- ❌ Wine / jogos Windows
+### ⚠️ Limitações Conhecidas
+- 🎨 **Renderização 3D (Gladio):** O Gladio está integrado e operante, mas a exibição atual usa **VNC**, que captura apenas a tela 2D. Isso faz com que os elementos 3D (linhas, polígonos) não sejam desenhados nas coordenadas corretas.
+  - *Solução em andamento:* Migração para um XServer nativo (Termux-X11/Xlorie) para permitir que o Gladio desenhe direto na GPU, liberando o 3D real.
+- ❌ Wine / jogos Windows (dependente da correção do Gladio acima).
 
 ### 📦 Como usar
-1. Baixa o `.apk` abaixo
-2. Habilita "instalar de fontes desconhecidas"
-3. Instala → abre → toca em **+** pra criar container
-4. Aguarda o boot (~3 min no primeiro)
-5. No xterm:
+1. Baixe o `.apk` na aba **[Releases](../../releases)**
+2. Habilite "instalar de fontes desconhecidas" no Android
+3. Instale → abra → toque em **+** pra criar seu ambiente (escolha nome e resolução)
+4. Aguarde o boot (~20 segundos)
+5. No Linux, abra o menu lateral e clique em **📥 Instalar / Abrir Arquivos** para gerenciar seus arquivos!
+
+> **Aviso:** É necessário ter pelo menos **1.5 GB de espaço livre** para extrair o sistema e os pacotes.
